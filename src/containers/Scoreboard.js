@@ -1,44 +1,41 @@
-import React from "react";
-import Stopwatch from "../components/Stopwatch";
-import Stats from "../components/Stats";
-import Counter from "../components/Counter"
-const INITIAL_STATE = {
-  players: [
-    {
-      name: "Jim Hoskins",
-      score: 31
-    },
-    {
-      name: "Andrew Chalkley",
-      score: 20
-    },
-    {
-      name: "Alena Holligan",
-      score: 50
-    }
-  ]
-};
+import React, { Component } from "react";
+import AddPlayerForm from "../components/AddPlayerForm";
+import Player from "../components/Player";
+import Header from "../components/Header";
 
-const Scoreboard = React.createClass({
-  getInitialState: function() {
-    return INITIAL_STATE;
-  },
-  onScoreChange: function(index, delta) {
+export default class Scoreboard extends Component {
+  state = {
+    players: [
+      {
+        name: "Jim Hoskins",
+        score: 31
+      },
+      {
+        name: "Andrew Chalkley",
+        score: 20
+      },
+      {
+        name: "Alena Holligan",
+        score: 50
+      }
+    ]
+  };
+  onScoreChange = (index, delta) => {
     this.state.players[index].score += delta;
     this.setState(this.state);
-  },
+  };
 
-  onAddPlayer: function(name) {
+  onAddPlayer = name => {
     this.state.players.push({ name: name, score: 0 });
     this.setState(this.state);
-  },
+  };
 
-  onRemovePlayer: function(index) {
+  onRemovePlayer = index => {
     this.state.players.splice(index, 1);
     this.setState(this.state);
-  },
+  };
 
-  render: function() {
+  render() {
     return (
       <div className="scoreboard">
         <Header players={this.state.players} />
@@ -61,23 +58,23 @@ const Scoreboard = React.createClass({
       </div>
     );
   }
-});
+}
 
 // ----------------------------------------------
 
-function Header(props) {
-  return (
-    <div className="header">
-      <Stats players={props.players} />
-      <h1>Scoreboard</h1>
-      <Stopwatch />
-    </div>
-  );
-}
+// function Header(props) {
+//   return (
+//     <div className="header">
+//       <Stats players={props.players} />
+//       <h1>Scoreboard</h1>
+//       <Stopwatch />
+//     </div>
+//   );
+// }
 
-Header.propTypes = {
-  players: React.PropTypes.array.isRequired
-};
+// Header.propTypes = {
+//   players: React.PropTypes.array.isRequired
+// };
 
 // Move to components/Stats.js
 // -----------------------------------------------------------------------
@@ -175,21 +172,21 @@ Header.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function Player(props) {
-  return (
-    <div className="player">
-      <div className="player-name">
-        <a className="remove-player" onClick={props.onRemove}>
-          ✖
-        </a>
-        {props.name}
-      </div>
-      <div className="player-score">
-        <Counter onChange={props.onScoreChange} score={props.score} />
-      </div>
-    </div>
-  );
-}
+// function Player(props) {
+//   return (
+//     <div className="player">
+//       <div className="player-name">
+//         <a className="remove-player" onClick={props.onRemove}>
+//           ✖
+//         </a>
+//         {props.name}
+//       </div>
+//       <div className="player-score">
+//         <Counter onChange={props.onScoreChange} score={props.score} />
+//       </div>
+//     </div>
+//   );
+// }
 
 Player.propTypes = {
   name: React.PropTypes.string.isRequired,
@@ -261,4 +258,3 @@ Player.propTypes = {
 //     );
 //   }
 // });
-export default Scoreboard;
