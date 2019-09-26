@@ -9,16 +9,14 @@
     "lint": "eslint ./src/**/*.{js, jsx} --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "react",
-    "redux",
-    "treehouse"
-  ],
+  "keywords": ["react", "redux", "treehouse"],
   "author": "Beau Palmquist",
   "license": "MIT",
   "dependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react": "^15.4.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "5.1.1",
+    "redux": "4.0.4"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
