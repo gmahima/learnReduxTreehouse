@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from "react";
 export default class AddPlayerForm extends Component {
-  static propTypes: {
-    onAdd: PropTypes.func.isRequired
+  static propTypes = {
+    addPlayer: PropTypes.func.isRequired
   };
 
   state = {
-    name: "" 
+    name: ""
   };
 
   onNameChange = e => {
@@ -13,16 +13,16 @@ export default class AddPlayerForm extends Component {
     this.setState({ name: name });
   };
 
-  onSubmit = e => {
+  addPlayer = e => {
     if (e) e.preventDefault();
-    this.props.onAdd(this.state.name);
+    this.props.addPlayer(this.state.name);
     this.setState({ name: "" });
   };
 
   render() {
     return (
       <div className="add-player-form">
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.addPlayer}>
           <input
             type="text"
             value={this.state.name}

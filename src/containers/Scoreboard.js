@@ -46,7 +46,7 @@ class Scoreboard extends Component {
 }
 
 const mapStateToProps = state => (
- { players: state
+ { players: state}
 
   )
 export default connect(mapStateToProps)(Scoreboard);

@@ -5,13 +5,15 @@ const Player= (props) => {
   return (
     <div className="player">
       <div className="player-name">
-        <a className="remove-player" onClick={props.onRemove}>
+        <a className="remove-player" onClick={()=> props.removePlayer(props.index)}>
           ✖
         </a>
         {props.name}
       </div>
       <div className="player-score">
-        <Counter onChange={props.onScoreChange} score={props.score} />
+        <Counter 
+        index = {props.index}
+        updatePlayerScore={props.updatePlayerScore} score={props.score} />
       </div>
     </div>
   );
