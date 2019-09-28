@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { bindActionCreaters } from "redux";
+import { bindActionCreators } from 'redux';
 import * as PlayerActionCreators from "../actions/player";
 import AddPlayerForm from "../components/AddPlayerForm";
 import Player from "../components/Player";
@@ -12,15 +12,16 @@ class Scoreboard extends Component {
   };
   render() {
     const { dispatch, players } = this.props;
-    const addPlayer = bindActionCreaters(
+    console.log(players);
+    const addPlayer = bindActionCreators(
       PlayerActionCreators.addPlayer,
       dispatch
     );
-    const removePlayer = bindActionCreaters(
+    const removePlayer = bindActionCreators(
       PlayerActionCreators.removePlayer,
       dispatch
     );
-    const updatePlayerScore = bindActionCreaters(
+    const updatePlayerScore = bindActionCreators(
       PlayerActionCreators.updatePlayerScore,
       dispatch
     );
@@ -44,13 +45,8 @@ class Scoreboard extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  players: state;
-};
+const mapStateToProps = state => (
+ { players: state
+
+  )
 export default connect(mapStateToProps)(Scoreboard);
-Player.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  score: React.PropTypes.number.isRequired,
-  onRemove: React.PropTypes.func.isRequired,
-  onScoreChange: React.PropTypes.func.isRequired
-};
