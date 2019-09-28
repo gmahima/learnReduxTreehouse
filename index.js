@@ -5,7 +5,8 @@ import { createStore } from "redux";
 import PlayerReducer from "./src/reducers/player";
 import Scoreboard from "./src/containers/Scoreboard";
 //import "./app.css";
-const store = createStore(PlayerReducer);
+const store = createStore(PlayerReducer,
+  window.devToolsExtension && window.devToolsExtension());
 render(
   <Provider store={store}>
     <Scoreboard />
