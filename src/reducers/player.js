@@ -39,6 +39,7 @@ export default function Player(state = initialState, action) {
             score: player.score + action.score
           };
         }
+        return player;
       });
     }
     default: {
